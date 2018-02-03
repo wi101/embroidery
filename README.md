@@ -9,6 +9,7 @@ This is an example usage:
 `printWithArt("Hello world")`
 
 Output:
+```
 
  *     *         *  *                                *      *
  *     *         *  *                                *      *
@@ -19,5 +20,5 @@ Output:
  *     *  *      *  *  *   *     * * * *  *   *  *   *  *   *
  *     *  *   *  *  *  *   *      *   *   *   *  *   *  *  **
  *     *   ***   *  *   ***       *   *    ***   *   *   ** *
-
+```
 //TODO
