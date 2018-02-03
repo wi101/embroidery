@@ -1,7 +1,5 @@
 import java.awt.image.BufferedImage
 import java.awt.{Color, Font}
-import java.io.File
-import javax.imageio.ImageIO
 
 package object embroidery {
 
