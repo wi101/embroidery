@@ -1,10 +1,8 @@
 package embroidery
 
-object embroidery extends App {
-
-  def printWithArt(content: String, art: Char = '*'): Unit = {
+object embroidery {
+  def printWithSimpleArt(content: String, art: Char = '*'): Unit = {
     val text = Text(content, art)
-    println(text.toImageText)
+    println(text.convertTextToASCIIArt)
   }
-  printWithArt("Hello world")
 }

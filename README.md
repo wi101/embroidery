@@ -6,7 +6,7 @@ You can add an artistic touch to your console.
 
 This is an example usage:
 
-`printWithArt("Hello world")`
+`embroidery.printWithSimpleArt("Hello world")`
 
 Output:
 ```
