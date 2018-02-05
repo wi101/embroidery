@@ -31,10 +31,11 @@ case class Image(bufferedImg: BufferedImage, art: Char) extends ASCIIArt {
   def toMatrixOfPixels(): Array[Array[Pixel]] = {
     val width = bufferedImg.getWidth
     val height = bufferedImg.getHeight
-    Array.ofDim[Pixel](height, width)
+    val matrix = Array.ofDim[Pixel](height, width)
     for {
       i <- 0 until height
       j <- 0 until width
     } (matrix(i).update(j, Pixel(value = bufferedImg.getRGB(j, i))))
+    matrix
   }
 }
