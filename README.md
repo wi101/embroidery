@@ -6,10 +6,13 @@ You can add an artistic touch to your console.
 
 This is an example usage:
 
+1. Convert your text to ASCII Art:
+
 `import embroidery.asciiArt.titles._`
-`printWithArt("Hello world")`
+`embroidery.printWithSimpleArt("Hello world", '#')`
 
 Output:
+
 ```
  #     #         #  #           #    #    #            #      #
  #     #         #  #           #   # #   #            #      #
