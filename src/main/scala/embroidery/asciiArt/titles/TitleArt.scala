@@ -1,7 +1,7 @@
 package embroidery.asciiArt
 package titles
 
-import java.awt.Font
+import java.awt.{Color, Font}
 import java.awt.image.BufferedImage
 
 case class TitleArt(title: Title, art: Art) extends Embroidery {
@@ -16,8 +16,11 @@ case class TitleArt(title: Title, art: Art) extends Embroidery {
     val width = metrics.stringWidth(title.value)
     val position = metrics.getAscent - metrics.getDescent
     val image = new BufferedImage(width, defaultSize, BufferedImage.TYPE_BYTE_BINARY)
-    val graphics2D = image.getGraphics()
-    graphics2D.drawString(title.value, 0, position)
+    val g = image.getGraphics()
+    g.drawString(title.value, 0, position)
+    g.dispose()
     image
   }
+
+  override protected def getAsciiArt(pixel: Pixel): Char = if (pixel.value == 0) ' ' else art.value
 }

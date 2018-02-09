@@ -10,7 +10,7 @@ This is an example usage:
 
 ```
 import embroidery.asciiArt.titles._
-embroidery.printWithSimpleArt("Hello world", '#')
+printWithSimpleArt("Hello world", '#')
 ```
 
 Output:
@@ -27,4 +27,14 @@ Output:
  #     #   ###   #  #   ###       #     #    ###   #   #   ## #
 
 ```
+
+2. Convert your LOGO to ASCII Art:
+
+```
+import embroidery.asciiArt.logos._
+printWithArt("src/test/scala/embroidery/asciiArt/logos/images/logo.jpg")
+```
+
+![alt text](https://github.com/wi101/embroidery/tree/master/src/test/scala/embroidery/asciiArt/logos/results/logoWIthAsciiArt.png)
+
 //TODO
