@@ -36,7 +36,7 @@ printWithArt("src/test/scala/embroidery/asciiArt/logos/images/logo.jpg")
 ```
 ### logo.png :
 
-![logo](https://user-images.githubusercontent.com/3535357/36005601-b39bfa40-0d38-11e8-8c3d-7e19f5fcf00a.jpg)
+![logowithasciiart](https://user-images.githubusercontent.com/3535357/36055462-d5cdfa72-0dfc-11e8-9b2a-2eee695bbb1f.png)
 
 ### result with ASCII Art:
 
