@@ -35,6 +35,6 @@ import embroidery.asciiArt.logos._
 printWithArt("src/test/scala/embroidery/asciiArt/logos/images/logo.jpg")
 ```
 
-![alt text](https://github.com/wi101/embroidery/tree/master/src/test/scala/embroidery/asciiArt/logos/results/logoWIthAsciiArt.png)
+[[https://github.com/wi101/embroidery/tree/master/src/test/scala/embroidery/asciiArt/logos/results/logoWIthAsciiArt.png|ALT TEXT]]
 
 //TODO
