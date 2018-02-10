@@ -34,18 +34,16 @@ case class LogoArt(url: URL, art: Art) extends Embroidery {
     assert(width > 0 && height > 0)
 
     val (maxW, maxH) = (30, 60)
-    val (restW, restH) = (width % maxW, height % maxH)
-    val newW = if (width == restW) width else maxW
-    val newH = if (height == restH) height else maxH
+    val newW = if (width < maxW) width else maxW
+    val newH = if (height < maxH) height else maxH
 
-    val (calculatedW, calculatedH) = if (width > height || width / height == 1) {
+    if (width > height || width / height == 1) {
       val q = width / height
-      (newW, newW / q)
+      (newW * 2, newW / q) //to be responsive in console
     }
     else if (height > width || height / width == 1) {
       val q = height / width
       (newH / q, newH)
-    } else (newH, newW)
-    (calculatedW * 2, calculatedH)
+    } else (newW, newH)
   }
 }
