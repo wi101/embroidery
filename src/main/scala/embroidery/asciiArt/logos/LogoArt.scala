@@ -6,6 +6,8 @@ import java.awt.image.BufferedImage
 import java.io.{File, IOException}
 import javax.imageio.ImageIO
 
+import embroidery.Embroidery
+
 case class LogoArt(url: URL, art: Art) extends Embroidery {
 
   private def readLogo(): Option[Logo] =
@@ -20,9 +22,9 @@ case class LogoArt(url: URL, art: Art) extends Embroidery {
   override def drawImage(): BufferedImage = {
     val emptyImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB)
     readLogo().fold(emptyImage){ logo =>
-      val (width, height) = calculatePreferedSize(logo.image.getWidth, logo.image.getHeight)
-      val tmp = logo.image.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-      val scaledImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+      val (width, height) = calculatePreferredSize(logo.image.getWidth, logo.image.getHeight)
+      val tmp = logo.image.getScaledInstance(width, height, Image.SCALE_SMOOTH)
+      val scaledImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
       val g = scaledImg.createGraphics()
       g.drawImage(tmp, 0, 0, width, height, null)
       g.dispose()
@@ -30,7 +32,7 @@ case class LogoArt(url: URL, art: Art) extends Embroidery {
     }
   }
 
-  def calculatePreferedSize(width: Int, height: Int): (Int, Int) = {
+  def calculatePreferredSize(width: Int, height: Int): (Int, Int) = {
     assert(width > 0 && height > 0)
 
     val (maxW, maxH) = (30, 60)

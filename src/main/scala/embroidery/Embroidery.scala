@@ -1,13 +1,15 @@
-package embroidery.asciiArt
+package embroidery
 
 import java.awt.Color
 import java.awt.image.BufferedImage
+
+import embroidery.asciiArt.{Art, Pixel, PixelAsciiArt, PixelMatrix}
 
 trait Embroidery {
   protected val art: Art
   protected def drawImage(): BufferedImage
 
-  private def toPixelMatrix(): PixelMatrix = {
+  private def toPixelMatrix: PixelMatrix = {
     val bufferedImg = drawImage()
     val width = bufferedImg.getWidth
     val height = bufferedImg.getHeight
@@ -16,8 +18,8 @@ trait Embroidery {
       i <- 0 until height
       j <- 0 until width
     } {
-      val pixcol = new Color(bufferedImg.getRGB(j, i))
-      val pixel = (((pixcol.getRed() * 0.30) + (pixcol.getBlue() * 0.59) + (pixcol.getGreen() * 0.11)))
+      val pixelColor = new Color(bufferedImg.getRGB(j, i))
+      val pixel = (pixelColor.getRed * 0.30) + (pixelColor.getBlue * 0.59) + (pixelColor.getGreen * 0.11)
       matrix(i).update(j, Pixel(pixel.toInt))
     }
     PixelMatrix(matrix)
@@ -29,8 +31,8 @@ trait Embroidery {
   }
 
 
-  def toAsciiArt(): String = {
-    val matrix = toPixelMatrix()
+  def toAsciiArt: String = {
+    val matrix = toPixelMatrix
     matrix.pixels.foldLeft("") {
       (asciiArt, lines) =>
         asciiArt + lines.map { pixel => getAsciiArt(pixel) }.mkString + "\n"
