@@ -35,17 +35,19 @@ case class LogoArt(url: URL, art: Art) extends Embroidery {
   def calculatePreferredSize(width: Int, height: Int): (Int, Int) = {
     assert(width > 0 && height > 0)
 
-    val (maxW, maxH) = (30, 60)
-    val newW = if (width < maxW) width else maxW
-    val newH = if (height < maxH) height else maxH
+    val (maxW, maxH) = (50, 50)
+    val x = if (width < maxW) width else maxW
+    val y = if (height < maxH) height else maxH
 
-    if (width > height || width / height == 1) {
-      val q = width / height
-      (newW * 2, newW / q) //to be responsive in console
+    if (width > height) {
+      val q: Float = width.toFloat /height.toFloat
+      val newHeight = (x / q).toInt
+      (x * 2, newHeight)
     }
-    else if (height > width || height / width == 1) {
-      val q = height / width
-      (newH / q, newH)
-    } else (newW, newH)
+    else if (height > width) {
+      val q: Float = height.toFloat / width.toFloat
+      val newWidth = (y / q).toInt
+      (newWidth * 2, y)
+    } else (x, y / 2) //if height == width
   }
 }
