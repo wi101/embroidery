@@ -1,9 +1,10 @@
 package embroidery.asciiArt
 package logos
 
-import java.awt.Image
+import java.awt.{Color, Image}
 import java.awt.image.BufferedImage
 import java.io.{File, IOException}
+
 import javax.imageio.ImageIO
 
 import embroidery.Embroidery
@@ -15,7 +16,7 @@ case class LogoArt(url: URL, art: Art) extends Embroidery {
       val bufferedImage = ImageIO.read(new File(url.value))
       Some(Logo(bufferedImage))
     } catch {
-      case e: IOException =>
+      case _: IOException =>
         println("Please check your URL..")
         None
     }
@@ -30,6 +31,11 @@ case class LogoArt(url: URL, art: Art) extends Embroidery {
       g.dispose()
       scaledImg
     }
+  }
+
+  def getAsciiArt(pixel: Pixel): Char = {
+    val darkestArt = PixelAsciiArt(Pixel(0), art)
+    PixelAsciiArt.pixelsWithArt.find(i => pixel.value >= i.pixel.value).getOrElse(darkestArt).art.value
   }
 
   def calculatePreferredSize(width: Int, height: Int): (Int, Int) = {

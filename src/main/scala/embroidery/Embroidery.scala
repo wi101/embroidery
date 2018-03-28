@@ -3,7 +3,7 @@ package embroidery
 import java.awt.Color
 import java.awt.image.BufferedImage
 
-import embroidery.asciiArt.{Art, Pixel, PixelAsciiArt, PixelMatrix}
+import embroidery.asciiArt.{Art, Pixel, PixelMatrix}
 
 trait Embroidery {
   protected val art: Art
@@ -18,24 +18,26 @@ trait Embroidery {
       i <- 0 until height
       j <- 0 until width
     } {
+      // if the background is transparent we must converted to white color
+      val isTransparent = (bufferedImg.getRGB(j, i) & 0xff000000) == 0
+      if (isTransparent) bufferedImg.setRGB(j, i, Color.white.getRGB&0x00ffffff)
+
       val pixelColor = new Color(bufferedImg.getRGB(j, i))
-      val pixel = (pixelColor.getRed * 0.30) + (pixelColor.getBlue * 0.59) + (pixelColor.getGreen * 0.11)
+
+      // calculate the brightness
+      val pixel = (pixelColor.getRed + pixelColor.getBlue + pixelColor.getGreen)/3
       matrix(i).update(j, Pixel(pixel.toInt))
     }
     PixelMatrix(matrix)
   }
 
-  protected def getAsciiArt(pixel: Pixel): Char = {
-    val darkestArt = PixelAsciiArt(Pixel(0), art)
-    PixelAsciiArt.pixelsWithArt.find(i => pixel.value >= i.pixel.value).getOrElse(darkestArt).art.value
-  }
-
+  protected def getAsciiArt(pixel: Pixel): Char
 
   def toAsciiArt: String = {
     val matrix = toPixelMatrix
     matrix.pixels.foldLeft("") {
       (asciiArt, lines) =>
-        asciiArt + lines.map { pixel => getAsciiArt(pixel) }.mkString + "\n"
+        asciiArt + lines.map(getAsciiArt).mkString + "\n"
     }
   }
 }

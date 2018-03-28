@@ -24,5 +24,5 @@ case class TitleArt(title: Title, art: Art) extends Embroidery {
     image
   }
 
-  override protected def getAsciiArt(pixel: Pixel): Char = if (pixel.value == 0) ' ' else art.value
+  def getAsciiArt(pixel: Pixel): Char = if (pixel.value == 0) ' ' else art.value
 }

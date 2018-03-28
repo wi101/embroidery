@@ -10,4 +10,6 @@ object Example extends App {
   printWithArt("src/test/scala/embroidery/asciiArt/logos/images/play.png") //511 * 231
   printWithArt("src/test/scala/embroidery/asciiArt/logos/images/akka.png") //350 * 144
   printWithArt("src/test/scala/embroidery/asciiArt/logos/images/fleur.jpg") //500 * 383
+
+  printWithArt("src/test/scala/embroidery/asciiArt/logos/images/transparent.png") //check an icon with transparent background
 }
