@@ -34,14 +34,23 @@ Output:
 
 ```
 import embroidery.asciiArt.logos._
-printWithArt("src/test/scala/embroidery/asciiArt/logos/images/logo.jpg")
+printWithArt("src/test/scala/embroidery/asciiArt/logos/images/scalaz.png")
 ```
-### logo.png :
 
-![logo](https://user-images.githubusercontent.com/3535357/36055500-2611c978-0dfd-11e8-8ca4-15c689fa0438.jpg)
+| scalaz.png | result with ASCII Art |
+| --- | --- |
+|![scalaz](https://user-images.githubusercontent.com/3535357/38699500-7d284c48-3e98-11e8-9cc4-bc359a35a7f0.png)| <img width="321" alt="capture d ecran 2018-04-12 a 21 26 53" src="https://user-images.githubusercontent.com/3535357/38699434-47dfbce2-3e98-11e8-9419-a78699264622.png">|
+
 
 ### result with ASCII Art:
 
-![logowithasciiart](https://user-images.githubusercontent.com/3535357/36055462-d5cdfa72-0dfc-11e8-9b2a-2eee695bbb1f.png)
 
-//TODO
+```
+import embroidery.asciiArt.logos._
+printWithArt("src/test/scala/embroidery/asciiArt/logos/images/scala.jpg")
+```
+| scala.jpg | result with ASCII Art |
+| --- | --- |
+| ![logo](https://user-images.githubusercontent.com/3535357/36055500-2611c978-0dfd-11e8-8ca4-15c689fa0438.jpg)|!<img width="724" alt="capture d ecran 2018-04-12 a 21 26 27" src="https://user-images.githubusercontent.com/3535357/38699716-1a383584-3e99-11e8-9172-7b7597a71b67.png">|
+
+
