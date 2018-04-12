@@ -42,8 +42,6 @@ printWithArt("src/test/scala/embroidery/asciiArt/logos/images/scalaz.png")
 |![scalaz](https://user-images.githubusercontent.com/3535357/38699500-7d284c48-3e98-11e8-9cc4-bc359a35a7f0.png)| <img width="321" alt="capture d ecran 2018-04-12 a 21 26 53" src="https://user-images.githubusercontent.com/3535357/38699434-47dfbce2-3e98-11e8-9419-a78699264622.png">|
 
 
-### result with ASCII Art:
-
 
 ```
 import embroidery.asciiArt.logos._
