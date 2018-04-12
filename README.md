@@ -49,6 +49,6 @@ printWithArt("src/test/scala/embroidery/asciiArt/logos/images/scala.jpg")
 ```
 | scala.jpg | result with ASCII Art |
 | --- | --- |
-| ![logo](https://user-images.githubusercontent.com/3535357/36055500-2611c978-0dfd-11e8-8ca4-15c689fa0438.jpg)|!<img width="724" alt="capture d ecran 2018-04-12 a 21 26 27" src="https://user-images.githubusercontent.com/3535357/38699716-1a383584-3e99-11e8-9172-7b7597a71b67.png">|
+| ![logo](https://user-images.githubusercontent.com/3535357/36055500-2611c978-0dfd-11e8-8ca4-15c689fa0438.jpg)|<img width="724" alt="capture d ecran 2018-04-12 a 21 26 27" src="https://user-images.githubusercontent.com/3535357/38699716-1a383584-3e99-11e8-9172-7b7597a71b67.png">|
 
 
