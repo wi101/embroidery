@@ -1,3 +1,3 @@
-package embroidery.asciiArt
+package embroidery
 
 case class PixelMatrix(pixels: Array[Array[Pixel]])

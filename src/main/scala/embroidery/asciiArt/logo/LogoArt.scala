@@ -1,13 +1,12 @@
-package embroidery.asciiArt
-package logos
+package embroidery
+package asciiArt
+package logo
 
-import java.awt.{Color, Image}
+import java.awt.Image
 import java.awt.image.BufferedImage
 import java.io.{File, IOException}
 
 import javax.imageio.ImageIO
-
-import embroidery.Embroidery
 
 case class LogoArt(url: URL, art: Art) extends Embroidery {
 
@@ -22,10 +21,12 @@ case class LogoArt(url: URL, art: Art) extends Embroidery {
     }
   override def drawImage(): BufferedImage = {
     val emptyImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB)
-    readLogo().fold(emptyImage){ logo =>
-      val (width, height) = calculatePreferredSize(logo.image.getWidth, logo.image.getHeight)
+    readLogo().fold(emptyImage) { logo =>
+      val (width, height) =
+        calculatePreferredSize(logo.image.getWidth, logo.image.getHeight)
       val tmp = logo.image.getScaledInstance(width, height, Image.SCALE_SMOOTH)
-      val scaledImg = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
+      val scaledImg =
+        new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
       val g = scaledImg.createGraphics()
       g.drawImage(tmp, 0, 0, width, height, null)
       g.dispose()
@@ -35,7 +36,11 @@ case class LogoArt(url: URL, art: Art) extends Embroidery {
 
   def getAsciiArt(pixel: Pixel): Char = {
     val darkestArt = PixelAsciiArt(Pixel(0), art)
-    PixelAsciiArt.pixelsWithArt.find(i => pixel.value >= i.pixel.value).getOrElse(darkestArt).art.value
+    PixelAsciiArt.pixelsWithArt
+      .find(i => pixel.value >= i.pixel.value)
+      .getOrElse(darkestArt)
+      .art
+      .value
   }
 
   def calculatePreferredSize(width: Int, height: Int): (Int, Int) = {
@@ -46,11 +51,10 @@ case class LogoArt(url: URL, art: Art) extends Embroidery {
     val y = if (height < maxH) height else maxH
 
     if (width > height) {
-      val q: Float = width.toFloat /height.toFloat
+      val q: Float = width.toFloat / height.toFloat
       val newHeight = (x / q).toInt
       (x * 2, newHeight)
-    }
-    else if (height > width) {
+    } else if (height > width) {
       val q: Float = height.toFloat / width.toFloat
       val newWidth = (y / q).toInt
       (newWidth * 2, y)

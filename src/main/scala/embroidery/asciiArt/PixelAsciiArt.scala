@@ -11,5 +11,6 @@ object PixelAsciiArt {
     PixelAsciiArt(Pixel(120), Art('^')),
     PixelAsciiArt(Pixel(110), Art('&')),
     PixelAsciiArt(Pixel(80), Art('8')),
-    PixelAsciiArt(Pixel(60), Art('#')))
+    PixelAsciiArt(Pixel(60), Art('#'))
+  )
 }

@@ -3,8 +3,6 @@ package embroidery
 import java.awt.Color
 import java.awt.image.BufferedImage
 
-import embroidery.asciiArt.{Art, Pixel, PixelMatrix}
-
 trait Embroidery {
   protected val art: Art
   protected def drawImage(): BufferedImage
@@ -18,14 +16,15 @@ trait Embroidery {
       i <- 0 until height
       j <- 0 until width
     } {
-      // if the background is transparent we must converted to white color
+      // if the background is transparent we must converted to white color background
       val isTransparent = (bufferedImg.getRGB(j, i) & 0xff000000) == 0
-      if (isTransparent) bufferedImg.setRGB(j, i, Color.white.getRGB&0x00ffffff)
+      if (isTransparent)
+        bufferedImg.setRGB(j, i, Color.white.getRGB & 0x00ffffff)
 
       val pixelColor = new Color(bufferedImg.getRGB(j, i))
 
       // calculate the brightness
-      val pixel = (pixelColor.getRed + pixelColor.getBlue + pixelColor.getGreen)/3
+      val pixel = (pixelColor.getRed + pixelColor.getBlue + pixelColor.getGreen) / 3
       matrix(i).update(j, Pixel(pixel.toInt))
     }
     PixelMatrix(matrix)
@@ -35,9 +34,8 @@ trait Embroidery {
 
   def toAsciiArt: String = {
     val matrix = toPixelMatrix
-    matrix.pixels.foldLeft("") {
-      (asciiArt, lines) =>
-        asciiArt + lines.map(getAsciiArt).mkString + "\n"
+    matrix.pixels.foldLeft("") { (asciiArt, lines) =>
+      asciiArt + lines.map(getAsciiArt).mkString + "\n"
     }
   }
 }

@@ -1,6 +1,7 @@
-package embroidery.asciiArt
+package embroidery
+package asciiArt
 
-package object logos {
+package object logo {
   def printWithArt(urlImg: String) = {
     val url = URL(urlImg)
     if (url.validate) {

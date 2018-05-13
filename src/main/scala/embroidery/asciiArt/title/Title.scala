@@ -1,3 +1,3 @@
-package embroidery.asciiArt.titles
+package embroidery.asciiArt.title
 
 case class Title(value: String) extends AnyVal

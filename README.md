@@ -11,8 +11,7 @@ This is an example usage:
 1. Convert your text to ASCII Art:
 
 ```
-import embroidery.asciiArt.titles._
-printWithSimpleArt("Hello world", '#')
+title.printWithSimpleArt("Hello world", '#')
 ```
 
 Output:
@@ -33,8 +32,7 @@ Output:
 2. Convert your LOGO to ASCII Art:
 
 ```
-import embroidery.asciiArt.logos._
-printWithArt("src/test/scala/embroidery/asciiArt/logos/images/scalaz.png")
+logo.printWithArt("src/test/scala/embroidery/asciiArt/logos/images/scalaz.png")
 ```
 
 | scalaz.png | result with ASCII Art |
@@ -44,8 +42,7 @@ printWithArt("src/test/scala/embroidery/asciiArt/logos/images/scalaz.png")
 
 
 ```
-import embroidery.asciiArt.logos._
-printWithArt("src/test/scala/embroidery/asciiArt/logos/images/scala.jpg")
+logo.printWithArt("src/test/scala/embroidery/asciiArt/logos/images/scala.jpg")
 ```
 | scala.jpg | result with ASCII Art |
 | --- | --- |

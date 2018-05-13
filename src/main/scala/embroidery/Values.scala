@@ -1,4 +1,4 @@
-package embroidery.asciiArt
+package embroidery
 
 case class Art(value: Char) extends AnyVal
 case class Pixel(value: Int) extends AnyVal

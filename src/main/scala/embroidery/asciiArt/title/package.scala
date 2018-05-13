@@ -1,6 +1,7 @@
-package embroidery.asciiArt
+package embroidery
+package asciiArt
 
-package object titles {
+package object title {
   def printWithArt(str: String, art: Char = '#'): Unit = {
     val titleArt = TitleArt(Title(str), Art(art)).toAsciiArt
     println(titleArt)

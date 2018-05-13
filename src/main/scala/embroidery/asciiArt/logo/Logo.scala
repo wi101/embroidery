@@ -1,4 +1,4 @@
-package embroidery.asciiArt.logos
+package embroidery.asciiArt.logo
 
 import java.awt.image.BufferedImage
 
