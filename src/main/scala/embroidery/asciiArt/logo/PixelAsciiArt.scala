@@ -11,13 +11,12 @@ object PixelAsciiArt {
     PixelAsciiArt(Pixel(200), Art('²')),
     PixelAsciiArt(Pixel(190), Art('*')),
     PixelAsciiArt(Pixel(180), Art('^')),
-    PixelAsciiArt(Pixel(170), Art('|')),
+    PixelAsciiArt(Pixel(170), Art('~')),
     PixelAsciiArt(Pixel(150), Art('/')),
-    PixelAsciiArt(Pixel(140), Art('s')),
-    PixelAsciiArt(Pixel(130), Art('e')),
-    PixelAsciiArt(Pixel(120), Art('p')),
-    PixelAsciiArt(Pixel(100), Art('G')),
+    PixelAsciiArt(Pixel(140), Art('|')),
+    PixelAsciiArt(Pixel(130), Art('s')),
+    PixelAsciiArt(Pixel(120), Art('q')),
     PixelAsciiArt(Pixel(90), Art('#')),
-    PixelAsciiArt(Pixel(70), Art('µ'))
+    PixelAsciiArt(Pixel(70), Art('@'))
     )
 }
