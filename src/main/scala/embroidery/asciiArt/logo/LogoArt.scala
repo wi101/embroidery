@@ -10,10 +10,11 @@ import javax.imageio.ImageIO
 
 case class LogoArt(url: URL, art: Art) extends Embroidery {
 
-  private def readLogo(): Option[Logo] =
+  private def readLogo(): Option[BufferedImage] =
     try {
       val bufferedImage = ImageIO.read(new File(url.value))
-      Some(Logo(bufferedImage))
+      if (bufferedImage.getWidth == 0 || bufferedImage.getHeight == 0) None
+      else Some(bufferedImage)
     } catch {
       case _: IOException =>
         println("Please check your URL..")
@@ -23,8 +24,8 @@ case class LogoArt(url: URL, art: Art) extends Embroidery {
     val emptyImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB)
     readLogo().fold(emptyImage) { logo =>
       val (width, height) =
-        calculatePreferredSize(logo.image.getWidth, logo.image.getHeight)
-      val tmp = logo.image.getScaledInstance(width, height, Image.SCALE_SMOOTH)
+        calculatePreferredSize(logo.getWidth, logo.getHeight)
+      val tmp = logo.getScaledInstance(width, height, Image.SCALE_SMOOTH)
       val scaledImg =
         new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB)
       val g = scaledImg.createGraphics()
@@ -43,9 +44,7 @@ case class LogoArt(url: URL, art: Art) extends Embroidery {
       .value
   }
 
-  def calculatePreferredSize(width: Int, height: Int): (Int, Int) = {
-    assert(width > 0 && height > 0)
-
+  private def calculatePreferredSize(width: Int, height: Int): (Int, Int) = {
     val (maxW, maxH) = (50, 50)
     val x = if (width < maxW) width else maxW
     val y = if (height < maxH) height else maxH
