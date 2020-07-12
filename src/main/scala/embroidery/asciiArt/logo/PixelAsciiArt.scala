@@ -1,7 +1,8 @@
 package embroidery
 package asciiArt.logo
 
-case class PixelAsciiArt(pixel: Pixel, art: Art)
+final case class PixelAsciiArt(pixel: Pixel, art: Art)
+
 object PixelAsciiArt {
   val pixelsWithArt: List[PixelAsciiArt] = List(
     PixelAsciiArt(Pixel(240), Art(' ')),
@@ -18,5 +19,5 @@ object PixelAsciiArt {
     PixelAsciiArt(Pixel(120), Art('q')),
     PixelAsciiArt(Pixel(90), Art('#')),
     PixelAsciiArt(Pixel(70), Art('@'))
-    )
+  )
 }

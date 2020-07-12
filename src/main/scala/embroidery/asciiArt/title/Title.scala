@@ -1,3 +1,3 @@
 package embroidery.asciiArt.title
 
-case class Title(value: String) extends AnyVal
+final case class Title(value: String) extends AnyVal

@@ -4,7 +4,7 @@ import java.awt.Color
 import java.awt.image.BufferedImage
 
 abstract class Embroidery {
-  protected val art: Art
+  protected def art: Art
   protected def drawImage(): BufferedImage
 
   private def toPixelMatrix: PixelMatrix = {

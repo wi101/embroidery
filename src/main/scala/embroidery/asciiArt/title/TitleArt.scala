@@ -5,7 +5,7 @@ package title
 import java.awt.Font
 import java.awt.image.BufferedImage
 
-case class TitleArt(title: Title, art: Art) extends Embroidery {
+final case class TitleArt(title: Title, art: Art) extends Embroidery {
   val defaultSize = 12
 
   override def drawImage(): BufferedImage = {

@@ -12,5 +12,6 @@ object LogoExamples extends App {
   logo.printWithArt("src/test/scala/embroidery/asciiArt/images/fleur.jpg") //500 * 383
   logo.printWithArt("src/test/scala/embroidery/asciiArt/images/transparent.png") //check an icon with transparent background
   logo.printWithArt("src/test/scala/embroidery/asciiArt/images/scalaz.png")
-  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/pikacho.png")
+  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/pikachu.png")
+  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/zio.png")
 }

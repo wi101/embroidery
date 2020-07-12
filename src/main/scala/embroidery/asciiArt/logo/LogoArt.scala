@@ -8,7 +8,7 @@ import java.io.{File, IOException}
 
 import javax.imageio.ImageIO
 
-case class LogoArt(url: URL, art: Art) extends Embroidery {
+final case class LogoArt(url: URL, art: Art) extends Embroidery {
 
   private def readLogo(): Option[BufferedImage] =
     try {
