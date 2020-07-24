@@ -1,5 +1,3 @@
-[![Build Status](https://api.travis-ci.org/wi101/embroidery.svg?branch=master)](https://travis-ci.org/wi101/embroidery)
-
 # embroidery
 
 You can add an artistic touch to your console.
