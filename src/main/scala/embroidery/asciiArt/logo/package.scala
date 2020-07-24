@@ -9,4 +9,11 @@ package object logo {
       println(logoArt)
     } else println(s"<Error> Invalid extension in $urlImg")
   }
+
+  def asciiArt(urlImg: String): String = {
+    val url = URL(urlImg)
+    if (url.validate) {
+      LogoArt(URL(urlImg), Art('µ')).toAsciiArt
+    } else "<Error> Invalid extension in $urlImg"
+  }
 }
