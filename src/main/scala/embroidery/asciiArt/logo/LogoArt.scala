@@ -48,7 +48,7 @@ final case class LogoArt(url: URL, logoStyle: LogoStyle) extends Embroidery {
   }
 
   private def calculatePreferredSize(width: Int, height: Int): (Int, Int) = {
-    val (maxW, maxH) = (50, 50)
+    val (maxW, maxH) = (logoStyle.maxSize.width, logoStyle.maxSize.height)
     val x = if (width < maxW) width else maxW
     val y = if (height < maxH) height else maxH
 

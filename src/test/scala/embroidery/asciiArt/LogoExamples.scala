@@ -21,7 +21,9 @@ object LogoExamples extends App {
 
   val img = logo.asciiArt(
     "src/test/scala/embroidery/asciiArt/images/zio.png",
-    pixelsWithArt
+    pixelsWithArt,
+    150,
+    150
   )
   val s = img.flatMap(
     c =>

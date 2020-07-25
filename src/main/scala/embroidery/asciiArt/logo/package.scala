@@ -13,6 +13,21 @@ package object logo {
       val logoArt = LogoArt(url, LogoStyle(pixelsWithArt)).toAsciiArt
       println(logoArt)
     }
+  def printWithArt(urlImg: String, width: Int, height: Int): Unit =
+    URL(urlImg).fold(println(s"<Error> Invalid extension in $urlImg")) { url =>
+      val logoArt =
+        LogoArt(url, LogoStyle(maxSize = Size(width, height))).toAsciiArt
+      println(logoArt)
+    }
+  def printWithArt(urlImg: String,
+                   pixelsWithArt: List[PixelAsciiArt],
+                   width: Int,
+                   height: Int): Unit =
+    URL(urlImg).fold(println(s"<Error> Invalid extension in $urlImg")) { url =>
+      val logoArt =
+        LogoArt(url, LogoStyle(pixelsWithArt, Size(width, height))).toAsciiArt
+      println(logoArt)
+    }
 
   def asciiArt(urlImg: String, style: LogoStyle = LogoStyle.default): String =
     URL(urlImg).fold(s"<Error> Invalid extension in $urlImg") { url =>
@@ -21,5 +36,16 @@ package object logo {
   def asciiArt(urlImg: String, pixelsWithArt: List[PixelAsciiArt]): String =
     URL(urlImg).fold(s"<Error> Invalid extension in $urlImg") { url =>
       LogoArt(url, LogoStyle(pixelsWithArt)).toAsciiArt
+    }
+  def asciiArt(urlImg: String, width: Int, height: Int): String =
+    URL(urlImg).fold(s"<Error> Invalid extension in $urlImg") { url =>
+      LogoArt(url, LogoStyle(maxSize = Size(width, height))).toAsciiArt
+    }
+  def asciiArt(urlImg: String,
+               pixelsWithArt: List[PixelAsciiArt],
+               width: Int,
+               height: Int): String =
+    URL(urlImg).fold(s"<Error> Invalid extension in $urlImg") { url =>
+      LogoArt(url, LogoStyle(pixelsWithArt, Size(width, height))).toAsciiArt
     }
 }

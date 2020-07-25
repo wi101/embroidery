@@ -35,9 +35,10 @@ package object asciiArt {
   // Logo
   final case class PixelAsciiArt(pixel: Pixel, art: Art)
 
-  final case class LogoStyle(
-    pixelsWithArt: List[PixelAsciiArt] = PixelAsciiArt.pixelsWithArt
-  ) {
+  final case class Size(width: Int, height: Int)
+  final case class LogoStyle(pixelsWithArt: List[PixelAsciiArt] =
+                               PixelAsciiArt.pixelsWithArt,
+                             maxSize: Size = Size(50, 50)) {
     val darkestArt: Art =
       pixelsWithArt.lastOption.map(_.art).getOrElse(Art('µ'))
   }

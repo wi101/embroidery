@@ -119,5 +119,12 @@ Output:
 
 <img width="572" alt="Screen Shot 2020-07-25 at 3 52 02 PM" src="https://user-images.githubusercontent.com/3535357/88458511-d1472500-ce8e-11ea-92a2-0eb53dc9660c.png">
 
+You can also control the size of your logo:
+
+```scala
+import embroidery.asciiArt._
+
+logo.asciiArt("src/test/scala/embroidery/asciiArt/images/zio.png", width = 150, height = 150)
+```
 
 Note: The valid format of the pictures are: jpg, jpeg, png, bmp
