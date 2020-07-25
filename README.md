@@ -8,8 +8,10 @@ This is an example usage:
 
 1. Convert your text to ASCII Art:
 
-```
-title.printWithSimpleArt("Hello world", '#')
+```scala
+import embroidery.asciiArt.title
+
+title.printWithArt("Hello world")
 ```
 
 Output:
@@ -27,9 +29,11 @@ Output:
 
 ```
 You can specify the spaces between the character.
-For example, e would like to display S c a l a, you can call:
-```
-title.printWithSimpleArt("Scala", art = 'S', spaced = Some(1))
+For example, if you would like to display S c a l a, you can call:
+```scala
+import embroidery.asciiArt._
+
+title.printWithArt("Scala", art = 'S', spaces = 1)
 ```
 
 Output:
@@ -53,7 +57,7 @@ If you would like to get the ascii art as a String and use it in different place
 ```scala
 import embroidery.asciiArt.title
 
-val zio: String = title.asciiArt("ZIO", "*", spaced = Some(2))
+val zio: String = title.asciiArt("ZIO")
 ```
 
 2. Convert your LOGO to ASCII Art:
@@ -85,6 +89,35 @@ You can get the Ascii Art of your icons as a string using:
 ```scala
 import embroidery.asciiArt.logo
 
-val zio: String = logo.asciiArt("image.png")
+val img: String = logo.asciiArt("image.png")
 ```
+
+You can also decide which characters to use on each brightness level:
+
+```scala
+import embroidery.asciiArt._
+
+ val pixelsWithArt: List[PixelAsciiArt] = List(
+    PixelAsciiArt(Pixel(255), Art(' ')),
+    PixelAsciiArt(Pixel(0), Art('#'))
+  )
+
+  val img: String = logo.asciiArt(
+    "src/test/scala/embroidery/asciiArt/images/zio.png",
+    pixelsWithArt
+  )
+  val s = img.flatMap(
+    c =>
+      if (c != ' ' && c != '\n')
+        Console.RED + c.toString + Console.RESET
+      else c.toString
+  )
+  println(s)
+```
+
+Output:
+
+<img width="572" alt="Screen Shot 2020-07-25 at 3 52 02 PM" src="https://user-images.githubusercontent.com/3535357/88458511-d1472500-ce8e-11ea-92a2-0eb53dc9660c.png">
+
+
 Note: The valid format of the pictures are: jpg, jpeg, png, bmp

@@ -8,7 +8,9 @@ import java.io.{File, IOException}
 
 import javax.imageio.ImageIO
 
-final case class LogoArt(url: URL, art: Art) extends Embroidery {
+final case class LogoArt(url: URL, logoStyle: LogoStyle) extends Embroidery {
+
+  override def art: Art = logoStyle.darkestArt
 
   private def readLogo(): Option[BufferedImage] =
     try {
@@ -20,6 +22,7 @@ final case class LogoArt(url: URL, art: Art) extends Embroidery {
         println("Please check your URL..")
         None
     }
+
   override def drawImage(): BufferedImage = {
     val emptyImage = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB)
     readLogo().fold(emptyImage) { logo =>
@@ -37,7 +40,7 @@ final case class LogoArt(url: URL, art: Art) extends Embroidery {
 
   def getAsciiArt(pixel: Pixel): Char = {
     val darkestArt = PixelAsciiArt(Pixel(0), art)
-    PixelAsciiArt.pixelsWithArt
+    logoStyle.pixelsWithArt
       .find(i => pixel.value >= i.pixel.value)
       .getOrElse(darkestArt)
       .art
