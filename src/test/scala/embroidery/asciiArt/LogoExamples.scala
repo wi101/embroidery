@@ -15,21 +15,35 @@ object LogoExamples extends App {
   logo.printWithArt("src/test/scala/embroidery/asciiArt/images/pikachu.png")
 
   val pixelsWithArt: List[PixelAsciiArt] = List(
+    // Brightest:255 ----> Darkest:0
     PixelAsciiArt(Pixel(255), Art(' ')),
-    PixelAsciiArt(Pixel(0), Art('#')),
+    PixelAsciiArt(Pixel(230), Art('.')),
+    PixelAsciiArt(Pixel(220), Art(',')),
+    PixelAsciiArt(Pixel(210), Art('°')),
+    PixelAsciiArt(Pixel(200), Art('²')),
+    PixelAsciiArt(Pixel(190), Art('*')),
+    PixelAsciiArt(Pixel(180), Art('^')),
+    PixelAsciiArt(Pixel(170), Art('~')),
+    PixelAsciiArt(Pixel(150), Art('/')),
+    PixelAsciiArt(Pixel(140), Art('|')),
+    PixelAsciiArt(Pixel(130), Art('s')),
+    PixelAsciiArt(Pixel(120), Art('q')),
+    PixelAsciiArt(Pixel(90), Art('µ')),
+    PixelAsciiArt(Pixel(70), Art('@')),
+    PixelAsciiArt(Pixel(0), Art('#'))
   )
 
   val img = logo.asciiArt(
-    "src/test/scala/embroidery/asciiArt/images/zio.png",
+    "src/test/scala/embroidery/asciiArt/images/scala.jpg",
     pixelsWithArt,
-    150,
-    150
+    100,
+    50
   )
-  val s = img.flatMap(
+  val scala = img.flatMap(
     c =>
       if (c != ' ' && c != '\n')
         Console.RED + c.toString + Console.RESET
       else c.toString
   )
-  println(s)
+  println(scala)
 }

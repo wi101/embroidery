@@ -123,8 +123,43 @@ You can also control the size of your logo:
 
 ```scala
 import embroidery.asciiArt._
+  val pixelsWithArt: List[PixelAsciiArt] = List(
+      PixelAsciiArt(Pixel(255), Art(' ')),
+      PixelAsciiArt(Pixel(230), Art('.')),
+      PixelAsciiArt(Pixel(220), Art(',')),
+      PixelAsciiArt(Pixel(210), Art('°')),
+      PixelAsciiArt(Pixel(200), Art('²')),
+      PixelAsciiArt(Pixel(190), Art('*')),
+      PixelAsciiArt(Pixel(180), Art('^')),
+      PixelAsciiArt(Pixel(170), Art('~')),
+      PixelAsciiArt(Pixel(150), Art('/')),
+      PixelAsciiArt(Pixel(140), Art('|')),
+      PixelAsciiArt(Pixel(130), Art('s')),
+      PixelAsciiArt(Pixel(120), Art('q')),
+      PixelAsciiArt(Pixel(90), Art('µ')),
+      PixelAsciiArt(Pixel(70), Art('@')),
+      PixelAsciiArt(Pixel(0), Art('#'))
+    )
 
-logo.asciiArt("src/test/scala/embroidery/asciiArt/images/zio.png", width = 150, height = 150)
+  val img = logo.asciiArt(
+    "src/test/scala/embroidery/asciiArt/images/scala.jpg",
+    pixelsWithArt,
+    100,
+    50
+  )
+  val scala = img.flatMap(
+    c =>
+      if (c != ' ' && c != '\n')
+        Console.RED + c.toString + Console.RESET
+      else c.toString
+  )
+  println(scala)
+
 ```
+
+Output:
+
+<img width="1428" alt="Screen Shot 2020-07-25 at 4 29 18 PM" src="https://user-images.githubusercontent.com/3535357/88459305-9647f000-ce94-11ea-980a-777d61b984b3.png">
+
 
 Note: The valid format of the pictures are: jpg, jpeg, png, bmp
