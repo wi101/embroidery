@@ -40,7 +40,7 @@ package object asciiArt {
                                PixelAsciiArt.pixelsWithArt,
                              maxSize: Size = Size(50, 50)) {
     val darkestArt: Art =
-      pixelsWithArt.lastOption.map(_.art).getOrElse(Art('µ'))
+      pixelsWithArt.lastOption.map(_.art).getOrElse(Art('#'))
   }
 
   object LogoStyle {

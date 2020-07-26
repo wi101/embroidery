@@ -10,8 +10,6 @@ import javax.imageio.ImageIO
 
 final case class LogoArt(url: URL, logoStyle: LogoStyle) extends Embroidery {
 
-  override def art: Art = logoStyle.darkestArt
-
   private def readLogo(): Option[BufferedImage] =
     try {
       val bufferedImage = ImageIO.read(new File(url.value))
@@ -39,7 +37,7 @@ final case class LogoArt(url: URL, logoStyle: LogoStyle) extends Embroidery {
   }
 
   def getAsciiArt(pixel: Pixel): Char = {
-    val darkestArt = PixelAsciiArt(Pixel(0), art)
+    val darkestArt = PixelAsciiArt(Pixel(0), logoStyle.darkestArt)
     logoStyle.pixelsWithArt
       .find(i => pixel.value >= i.pixel.value)
       .getOrElse(darkestArt)
