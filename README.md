@@ -53,11 +53,12 @@ SSSSS      SSSSS    SSSSSSS     SS    SSSSSSS
                                                     
 ```
 WARNNG: The title should be short to be able to display it in your screen (maximum 20 characters including spaces).
+
 2. Convert your LOGO to ASCII Art:
 
-```
-You can get the Ascii Art of your icons as a string using `logo.asciiArt` method.
+You can get the Ascii Art of your icons using `logo.asciiArt` method.
 
+```
 logo.asciiArt("src/test/scala/embroidery/asciiArt/logos/images/pikachu.png")
 ```
 | pikachu.png | result with ASCII Art |
