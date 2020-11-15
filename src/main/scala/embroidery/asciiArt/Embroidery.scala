@@ -4,6 +4,8 @@ import java.awt.Color
 import java.awt.image.BufferedImage
 
 abstract class Embroidery {
+  protected def isEmpty: Boolean
+
   protected def drawImage(): BufferedImage
 
   private def toPixelMatrix: PixelMatrix = {
@@ -33,8 +35,21 @@ abstract class Embroidery {
 
   def toAsciiArt: String = {
     val matrix = toPixelMatrix
-    matrix.pixels.foldLeft("") { (asciiArt, lines) =>
+    if (isEmpty) "<error> Input couldn't be converted to ASCII Art."
+    else matrix.pixels.foldLeft("") { (asciiArt, lines) =>
       asciiArt + lines.map(getAsciiArt).mkString + "\n"
     }
+  }
+}
+object Embroidery {
+
+  case object Empty extends Embroidery {
+    override protected def isEmpty: Boolean = true
+    // Draw an empty image for an empty image.
+    override protected def drawImage(): BufferedImage =
+      new BufferedImage(1, 1, BufferedImage.TYPE_BYTE_BINARY)
+
+    // Use an empty ascii char
+    override protected def getAsciiArt(pixel: Pixel): Char = '\u0000'
   }
 }

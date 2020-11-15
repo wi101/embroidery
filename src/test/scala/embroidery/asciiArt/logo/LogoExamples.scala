@@ -1,18 +1,22 @@
 package embroidery.asciiArt
+package logo
 
 object LogoExamples extends App {
-  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/cat2.png") //443 * 720
+  println(logo.asciiArt("src/test/images/cat2.png"))
+  println(logo.asciiArt("src/test/images/cat.png"))
+  println(logo.asciiArt("src/test/images/smiley.png"))
+  println(logo.asciiArt("src/test/images/scala.jpg"))
 
-  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/cat.png") //225 * 225
-  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/smiley.png") //720 * 720
+  // invalid
+  println(logo.asciiArt("src/test/images/play.png", 10, 10))
 
-  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/scala.jpg") //800 * 237
-  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/play.png") //511 * 231
-  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/akka.png") //350 * 144
-  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/fleur.jpg") //500 * 383
-  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/transparent.png") //check an icon with transparent background
-  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/scalaz.png")
-  logo.printWithArt("src/test/scala/embroidery/asciiArt/images/pikachu.png")
+  println(logo.asciiArt("src/test/images/akka.png"))
+  println(logo.asciiArt("src/test/images/fleur.jpg", 50, 30))
+  println(logo.asciiArt(
+    "src/test/images/transparent.png")) //check an icon with transparent background
+  println(logo.asciiArt("src/test/images/scalaz.png"))
+  println(
+    logo.asciiArt("src/test/images/pikachu.png", 50, 50))
 
   val pixelsWithArt: List[PixelAsciiArt] = List(
     // Brightest:255 ----> Darkest:0
@@ -34,7 +38,7 @@ object LogoExamples extends App {
   )
 
   val img = logo.asciiArt(
-    "src/test/scala/embroidery/asciiArt/images/scala.jpg",
+    "src/test/images/scala.jpg",
     pixelsWithArt,
     100,
     50

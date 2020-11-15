@@ -4,20 +4,19 @@ package title
 import java.awt.Font
 import java.awt.image.BufferedImage
 
-final case class TitleArt(title: Title, titleStyle: TitleStyle)
-    extends Embroidery {
+final case class TitleArt private (title: Title) extends Embroidery {
+
+  override protected def isEmpty: Boolean = false
 
   override def drawImage(): BufferedImage = {
-    import titleStyle._
+    import title.style._
 
     val emptyImage = new BufferedImage(1, 1, BufferedImage.TYPE_BYTE_BINARY)
     val graphics = emptyImage.getGraphics
     val font = new Font(Font.SANS_SERIF, Font.PLAIN, fontSize)
     graphics.setFont(font)
-    val spacesStr = (1 to spaces).map(_ => ' ').mkString
-    val text = title.value.flatMap(_ + spacesStr)
     val metrics = graphics.getFontMetrics(font)
-    val width = metrics.stringWidth(text)
+    val width = metrics.stringWidth(title.text)
     val height = metrics.getHeight
     val image =
       new BufferedImage(
@@ -26,11 +25,16 @@ final case class TitleArt(title: Title, titleStyle: TitleStyle)
         BufferedImage.TYPE_BYTE_BINARY
       )
     val g = image.getGraphics
-    g.drawString(text, metrics.getLeading, height)
+    g.drawString(title.text, metrics.getLeading, height)
     g.dispose()
     image
   }
 
   def getAsciiArt(pixel: Pixel): Char =
-    if (pixel.value == 0) ' ' else titleStyle.art.value
+    if (pixel.value == 0) ' ' else title.style.art.value
+}
+
+object TitleArt {
+  def apply(value: String, style: TitleStyle): Embroidery =
+    Title(value, style).fold[Embroidery](Embroidery.Empty)(TitleArt(_))
 }
