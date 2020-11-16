@@ -1,7 +1,7 @@
 package embroidery.asciiArt
 package logo
 
-final case class URL private(value: String) extends AnyVal {
+final case class URL private (value: String) extends AnyVal {
   def isValid: Boolean = {
     val regex = "[^\\s]+(\\.(?i)(jpg|jpeg|png|bmp))$"
     value.matches(regex)
@@ -19,10 +19,11 @@ object URL {
 final case class PixelAsciiArt(pixel: Pixel, art: Art)
 
 final case class Size(width: Int, height: Int)
-final case class LogoStyle(pixelsWithArt: List[PixelAsciiArt] =
-                           PixelAsciiArt.pixelsWithArt,
-                           maxSize: Size = Size(100, 100)) {
-  def isValid: Boolean =  maxSize.width > 10 || maxSize.height > 10
+final case class LogoStyle(
+    pixelsWithArt: List[PixelAsciiArt] = PixelAsciiArt.pixelsWithArt,
+    maxSize: Size = Size(100, 100)
+) {
+  def isValid: Boolean = maxSize.width > 10 || maxSize.height > 10
   val darkestArt: Art =
     pixelsWithArt.lastOption.map(_.art).getOrElse(Art('#'))
 }
@@ -51,4 +52,3 @@ object PixelAsciiArt {
     PixelAsciiArt(Pixel(0), Art('µ'))
   )
 }
-

@@ -4,13 +4,10 @@ package logo
 
 import java.awt.Image
 import java.awt.image.BufferedImage
-import java.io.{File, IOException}
+import java.io.{ File, IOException }
 import javax.imageio.ImageIO
 
-final case class LogoArt private (logo: BufferedImage,
-                                  url: URL,
-                                  logoStyle: LogoStyle)
-    extends Embroidery {
+final case class LogoArt private (logo: BufferedImage, url: URL, logoStyle: LogoStyle) extends Embroidery {
 
   override protected def isEmpty: Boolean = false
 
@@ -37,11 +34,11 @@ final case class LogoArt private (logo: BufferedImage,
 
   private def calculatePreferredSize(width: Int, height: Int): (Int, Int) = {
     val (maxW, maxH) = (logoStyle.maxSize.width, logoStyle.maxSize.height)
-    val x = if (width < maxW) width else maxW
-    val y = if (height < maxH) height else maxH
+    val x            = if (width < maxW) width else maxW
+    val y            = if (height < maxH) height else maxH
 
     if (width > height) {
-      val q: Float = width.toFloat / height.toFloat
+      val q: Float  = width.toFloat / height.toFloat
       val newHeight = (x / q).toInt
       (x * 2, newHeight)
     } else if (height > width) {
@@ -55,7 +52,7 @@ final case class LogoArt private (logo: BufferedImage,
 object LogoArt {
   def apply(imgPath: String, logoStyle: LogoStyle): Embroidery =
     (for {
-      url <- URL(imgPath) if logoStyle.isValid
+      url  <- URL(imgPath) if logoStyle.isValid
       logo <- readLogo(url)
     } yield LogoArt(logo, url, logoStyle)).getOrElse(Embroidery.Empty)
 

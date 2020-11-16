@@ -12,12 +12,12 @@ final case class TitleArt private (title: Title) extends Embroidery {
     import title.style._
 
     val emptyImage = new BufferedImage(1, 1, BufferedImage.TYPE_BYTE_BINARY)
-    val graphics = emptyImage.getGraphics
-    val font = new Font(Font.SANS_SERIF, Font.PLAIN, fontSize)
+    val graphics   = emptyImage.getGraphics
+    val font       = new Font(Font.SANS_SERIF, Font.PLAIN, fontSize)
     graphics.setFont(font)
     val metrics = graphics.getFontMetrics(font)
-    val width = metrics.stringWidth(title.text)
-    val height = metrics.getHeight
+    val width   = metrics.stringWidth(title.text)
+    val height  = metrics.getHeight
     val image =
       new BufferedImage(
         width + metrics.getAscent,

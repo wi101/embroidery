@@ -2,7 +2,7 @@ package embroidery.asciiArt
 package title
 
 // Title
-final case class Title private(text: String, style: TitleStyle)
+final case class Title private (text: String, style: TitleStyle)
 
 object Title {
   val MaxLength: Int = 20
