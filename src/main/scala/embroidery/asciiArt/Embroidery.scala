@@ -10,9 +10,9 @@ abstract class Embroidery {
 
   private def toPixelMatrix: PixelMatrix = {
     val bufferedImg = drawImage()
-    val width = bufferedImg.getWidth
-    val height = bufferedImg.getHeight
-    val matrix = Array.ofDim[Pixel](height, width)
+    val width       = bufferedImg.getWidth
+    val height      = bufferedImg.getHeight
+    val matrix      = Array.ofDim[Pixel](height, width)
     for {
       i <- 0 until height
       j <- 0 until width
@@ -36,9 +36,10 @@ abstract class Embroidery {
   def toAsciiArt: String = {
     val matrix = toPixelMatrix
     if (isEmpty) "<error> Input couldn't be converted to ASCII Art."
-    else matrix.pixels.foldLeft("") { (asciiArt, lines) =>
-      asciiArt + lines.map(getAsciiArt).mkString + "\n"
-    }
+    else
+      matrix.pixels.foldLeft("") { (asciiArt, lines) =>
+        asciiArt + lines.map(getAsciiArt).mkString + "\n"
+      }
   }
 }
 object Embroidery {

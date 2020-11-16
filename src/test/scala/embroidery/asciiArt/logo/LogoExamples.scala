@@ -12,11 +12,9 @@ object LogoExamples extends App {
 
   println(logo.asciiArt("src/test/images/akka.png"))
   println(logo.asciiArt("src/test/images/fleur.jpg", 50, 30))
-  println(logo.asciiArt(
-    "src/test/images/transparent.png")) //check an icon with transparent background
+  println(logo.asciiArt("src/test/images/transparent.png")) //check an icon with transparent background
   println(logo.asciiArt("src/test/images/scalaz.png"))
-  println(
-    logo.asciiArt("src/test/images/pikachu.png", 50, 50))
+  println(logo.asciiArt("src/test/images/pikachu.png", 50, 50))
 
   val pixelsWithArt: List[PixelAsciiArt] = List(
     // Brightest:255 ----> Darkest:0
@@ -43,11 +41,10 @@ object LogoExamples extends App {
     100,
     50
   )
-  val scala = img.flatMap(
-    c =>
-      if (c != ' ' && c != '\n')
-        Console.RED + c.toString + Console.RESET
-      else c.toString
+  val scala = img.flatMap(c =>
+    if (c != ' ' && c != '\n')
+      Console.RED + c.toString + Console.RESET
+    else c.toString
   )
   println(scala)
 }
