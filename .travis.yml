@@ -3,3 +3,17 @@ jdk: oraclejdk8
 scala:
    - 2.12.8
    
+before_install:
+   - git fetch --tags
+stages:
+   - name: test
+   - name: release
+     if: ((branch = master AND type = push) OR (tag IS present)) AND NOT fork
+jobs:
+   include:
+      - name: compile
+        script: sbt compile
+      - name: formatting
+        script: ./bin/scalafmt --test
+      - stage: release
+        script: sbt ci-release
