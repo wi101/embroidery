@@ -5,8 +5,7 @@ package object title {
     TitleArt(str, style).toAsciiArt
 
   def asciiArt(str: String, art: Char): String =
-    Titl
-  eArt(str, TitleStyle(Art(art))).toAsciiArt
+    TitleArt(str, TitleStyle(Art(art))).toAsciiArt
 
   def asciiArt(str: String, art: Char, spaces: Int): String =
     TitleArt(str, TitleStyle(Art(art), spaces)).toAsciiArt
