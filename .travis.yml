@@ -24,7 +24,5 @@ jobs:
   include:
     - name: compile
       script: sbt ++$TRAVIS_SCALA_VERSION compile test:compile
-    - name: formatting
-      script: ./bin/scalafmt --test
     - stage: release
       script: sbt ci-release
