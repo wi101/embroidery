@@ -1,6 +1,6 @@
 language: scala
 scala:
-  - 2.12.8
+  - 2.13.3
 cache:
   directories:
     - $HOME/.sbt/1.0/dependency
