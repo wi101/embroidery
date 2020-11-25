@@ -8,10 +8,10 @@ object LogoExamples extends App {
   println(logo.asciiArt("src/test/images/scala.jpg"))
 
   // invalid
-  println(logo.asciiArt("src/test/images/play.png", 10, 10))
+  println(logo.asciiArt("src/test/images/play.png", 5, 5))
 
   println(logo.asciiArt("src/test/images/akka.png"))
-  println(logo.asciiArt("src/test/images/fleur.jpg", 50, 30))
+  println(logo.asciiArt("src/test/images/fleur.jpg", 20, 20))
   println(logo.asciiArt("src/test/images/transparent.png")) //check an icon with transparent background
   println(logo.asciiArt("src/test/images/scalaz.png"))
   println(logo.asciiArt("src/test/images/pikachu.png", 50, 50))

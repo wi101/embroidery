@@ -36,8 +36,8 @@ object LogoStyle {
       pixelsWithArt: List[PixelAsciiArt] = PixelAsciiArt.pixelsWithArt,
       maxSize: Size = Size(100, 100)
   ): Either[String, LogoStyle] = {
-    if (maxSize.width >= 10 || maxSize.height >= 10) Right(new LogoStyle(pixelsWithArt, maxSize))
-    else Left("maxSize should be at least [10, 10]")
+    if (maxSize.width >= 20 || maxSize.height >= 20) Right(new LogoStyle(pixelsWithArt, maxSize))
+    else Left("maxSize should be at least [20, 20]")
   }
 }
 
