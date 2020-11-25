@@ -6,8 +6,6 @@ import java.awt.image.BufferedImage
 
 final case class TitleArt private (title: Title) extends Embroidery {
 
-  override protected def isEmpty: Boolean = false
-
   override def drawImage(): BufferedImage = {
     import title.style._
 
@@ -36,5 +34,5 @@ final case class TitleArt private (title: Title) extends Embroidery {
 
 object TitleArt {
   def apply(value: String, style: TitleStyle): Embroidery =
-    Title(value, style).fold[Embroidery](Embroidery.Empty)(TitleArt(_))
+    Title(value, style).fold[Embroidery](Embroidery.Empty, TitleArt(_))
 }
