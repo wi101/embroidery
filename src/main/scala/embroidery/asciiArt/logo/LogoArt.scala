@@ -9,8 +9,6 @@ import javax.imageio.ImageIO
 
 final case class LogoArt private (logo: BufferedImage, url: URL, logoStyle: LogoStyle) extends Embroidery {
 
-  override protected def isEmpty: Boolean = false
-
   override def drawImage(): BufferedImage = {
     val (width, height) =
       calculatePreferredSize(logo.getWidth, logo.getHeight)
@@ -50,18 +48,21 @@ final case class LogoArt private (logo: BufferedImage, url: URL, logoStyle: Logo
 }
 
 object LogoArt {
-  def apply(imgPath: String, logoStyle: LogoStyle): Embroidery =
-    (for {
-      url  <- URL(imgPath) if logoStyle.isValid
-      logo <- readLogo(url)
-    } yield LogoArt(logo, url, logoStyle)).getOrElse(Embroidery.Empty)
+  def apply(imgPath: String, maybeLogoStyle: Either[String, LogoStyle]): Embroidery = {
+    val result = for {
+      logoStyle <- maybeLogoStyle
+      url       <- URL(imgPath)
+      logo      <- readLogo(url)
+    } yield LogoArt(logo, url, logoStyle)
+    result.fold(Embroidery.Empty, identity)
+  }
 
-  private def readLogo(url: URL): Option[BufferedImage] =
+  private def readLogo(url: URL): Either[String, BufferedImage] =
     try {
       val bufferedImage = ImageIO.read(new File(url.value))
-      if (bufferedImage.getWidth == 0 || bufferedImage.getHeight == 0) None
-      else Some(bufferedImage)
+      if (bufferedImage.getWidth == 0 || bufferedImage.getHeight == 0) Left("Width and Height should be > 0")
+      else Right(bufferedImage)
     } catch {
-      case _: IOException => None
+      case ex: IOException => Left(ex.getMessage)
     }
 }

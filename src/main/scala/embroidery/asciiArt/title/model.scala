@@ -6,10 +6,10 @@ final case class Title private (text: String, style: TitleStyle)
 
 object Title {
   val MaxLength: Int = 20
-  def apply(str: String, style: TitleStyle): Option[Title] = {
+  def apply(str: String, style: TitleStyle): Either[String, Title] = {
     val text = finalText(str, style.spaces)
-    if (text.length <= MaxLength) Some(new Title(text, style))
-    else None
+    if (text.length <= MaxLength) Right(new Title(text, style))
+    else Left("The title shouldn't be too long, maximum supported length is 20")
   }
 
   private def finalText(text: String, spaces: Int): String =

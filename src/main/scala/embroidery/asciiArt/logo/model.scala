@@ -9,9 +9,10 @@ final case class URL private (value: String) extends AnyVal {
 }
 
 object URL {
-  def apply(path: String): Option[URL] = {
+  def apply(path: String): Either[String, URL] = {
     val url = new URL(path)
-    if (url.isValid) Some(url) else None
+    if (url.isValid) Right(url)
+    else Left(s"Invalid path: $path, Embroidery supports only: jpg, jpeg, png, bmp formats.")
   }
 }
 
@@ -19,7 +20,7 @@ object URL {
 final case class PixelAsciiArt(pixel: Pixel, art: Art)
 
 final case class Size(width: Int, height: Int)
-final case class LogoStyle(
+final case class LogoStyle private (
     pixelsWithArt: List[PixelAsciiArt] = PixelAsciiArt.pixelsWithArt,
     maxSize: Size = Size(100, 100)
 ) {
@@ -29,7 +30,15 @@ final case class LogoStyle(
 }
 
 object LogoStyle {
-  val default: LogoStyle = LogoStyle(PixelAsciiArt.pixelsWithArt)
+  val default: Either[String, LogoStyle] = Right(new LogoStyle(PixelAsciiArt.pixelsWithArt))
+
+  def apply(
+      pixelsWithArt: List[PixelAsciiArt] = PixelAsciiArt.pixelsWithArt,
+      maxSize: Size = Size(100, 100)
+  ): Either[String, LogoStyle] = {
+    if (maxSize.width >= 10 || maxSize.height >= 10) Right(new LogoStyle(pixelsWithArt, maxSize))
+    else Left("maxSize should be at least [10, 10]")
+  }
 }
 
 object PixelAsciiArt {

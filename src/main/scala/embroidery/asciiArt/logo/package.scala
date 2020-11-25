@@ -3,8 +3,8 @@ package asciiArt
 
 package object logo {
 
-  def asciiArt(urlImg: String, style: LogoStyle = LogoStyle.default): String =
-    LogoArt(urlImg, style).toAsciiArt
+  def asciiArt(urlImg: String): String =
+    LogoArt(urlImg, LogoStyle.default).toAsciiArt
 
   def asciiArt(urlImg: String, pixelsWithArt: List[PixelAsciiArt]): String =
     LogoArt(urlImg, LogoStyle(pixelsWithArt)).toAsciiArt

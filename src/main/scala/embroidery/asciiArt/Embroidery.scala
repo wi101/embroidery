@@ -3,8 +3,10 @@ package embroidery.asciiArt
 import java.awt.Color
 import java.awt.image.BufferedImage
 
-abstract class Embroidery {
-  protected def isEmpty: Boolean
+import scala.Console.{ RED, RESET }
+import scala.util.Try
+
+abstract class Embroidery { self =>
 
   protected def drawImage(): BufferedImage
 
@@ -33,19 +35,25 @@ abstract class Embroidery {
 
   protected def getAsciiArt(pixel: Pixel): Char
 
-  def toAsciiArt: String = {
-    val matrix = toPixelMatrix
-    if (isEmpty) "<error> Input couldn't be converted to ASCII Art."
-    else
-      matrix.pixels.foldLeft("") { (asciiArt, lines) =>
-        asciiArt + lines.map(getAsciiArt).mkString + "\n"
-      }
-  }
+  def toAsciiArt: String =
+    self match {
+      case Embroidery.Empty(reason) =>
+        s"$RED<error>$RESET Input couldn't be converted to ASCII Art. Reason: $reason"
+
+      case _ =>
+        Try {
+          val matrix = toPixelMatrix
+          matrix.pixels.foldLeft("") { (asciiArt, lines) =>
+            asciiArt + lines.map(getAsciiArt).mkString + "\n"
+          }
+        }.recover(err => s"$RED<error>$RESET Input couldn't be converted to ASCII Art. Reason: $err.")
+          .getOrElse(s"$RED<error>$RESET Unexpected error!")
+    }
 }
+
 object Embroidery {
 
-  case object Empty extends Embroidery {
-    override protected def isEmpty: Boolean = true
+  final case class Empty(reason: String) extends Embroidery {
     // Draw an empty image for an empty image.
     override protected def drawImage(): BufferedImage =
       new BufferedImage(1, 1, BufferedImage.TYPE_BYTE_BINARY)
