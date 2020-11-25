@@ -19,7 +19,10 @@ object URL {
 // Logo
 final case class PixelAsciiArt(pixel: Pixel, art: Art)
 
-final case class Size(width: Int, height: Int)
+final case class Size(width: Int, height: Int) {
+  override def toString: String = s"[width:$width, height:$height]"
+}
+
 final case class LogoStyle private (
     pixelsWithArt: List[PixelAsciiArt] = PixelAsciiArt.pixelsWithArt,
     maxSize: Size = Size(100, 100)
@@ -31,13 +34,13 @@ final case class LogoStyle private (
 
 object LogoStyle {
   val default: Either[String, LogoStyle] = Right(new LogoStyle(PixelAsciiArt.pixelsWithArt))
-
+  val MinSize                            = Size(20, 20)
   def apply(
       pixelsWithArt: List[PixelAsciiArt] = PixelAsciiArt.pixelsWithArt,
       maxSize: Size = Size(100, 100)
   ): Either[String, LogoStyle] = {
-    if (maxSize.width >= 20 || maxSize.height >= 20) Right(new LogoStyle(pixelsWithArt, maxSize))
-    else Left("maxSize should be at least [20, 20]")
+    if (maxSize.width >= MinSize.width || maxSize.height >= MinSize.height) Right(new LogoStyle(pixelsWithArt, maxSize))
+    else Left(s"$maxSize is invalid, it should be at least $MinSize")
   }
 }
 
