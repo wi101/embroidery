@@ -13,7 +13,7 @@ object Title {
   }
 
   private def finalText(text: String, spaces: Int): String =
-    text.mkString(" ".repeat(spaces))
+    text.mkString(" " * spaces)
 }
 
 /**
