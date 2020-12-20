@@ -1,5 +1,4 @@
-name: Scala CI
-
+name: Continious Integration
 on:
   push:
   pull_request:
