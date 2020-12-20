@@ -8,5 +8,5 @@ object TitleExamples extends App {
   println(title.asciiArt("Peace", '+', 0))
   println(title.asciiArt("Scala", 'S', 1))
   // invalid title
-  println(title.asciiArt("a".repeat(70), '1'))
+  println(title.asciiArt("a" * 70), '1')
 }

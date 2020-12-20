@@ -1,0 +1,12 @@
+name: Continious Integration
+on:
+  push:
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2.3.4
+    - uses: olafurpg/setup-scala@v10
+    - name: Compile
+      run: sbt compile
