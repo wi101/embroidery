@@ -2,9 +2,12 @@
 
 You can add an artistic touch to your console.
 
-## Usage
+To use embroidery, add the following line in your `build.sbt` file:
+```
+libraryDependencies += "com.github.wi101" %% "embroidery" % "0.1.1"
+```
 
-This is an example usage:
+## Usage
 
 1. Convert your text to ASCII Art:
 `title.asciiArt` returns a String that you can display or use in your project.
