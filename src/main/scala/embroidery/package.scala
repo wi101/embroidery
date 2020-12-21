@@ -3,18 +3,18 @@ package object embroidery {
   /**
     * Apply asciiArt to any string
     */
-  implicit class TitleHelper(val str: String) extends AnyVal {
+  implicit class TitleHelper(val text: String) extends AnyVal {
     def toAsciiArt: String =
-      title.asciiArt(str)
+      title.asciiArt(text)
 
     def toAsciiArt(art: Char): String =
-      title.asciiArt(str, art = art)
+      title.asciiArt(text, art = art)
 
     def toAsciiArt(art: Char, spaces: Int): String =
-      title.asciiArt(str, art = art, spaces = spaces)
+      title.asciiArt(text, art = art, spaces = spaces)
 
     def toAsciiArt(spaces: Int): String =
-      title.asciiArt(str, spaces = spaces)
+      title.asciiArt(text, spaces = spaces)
   }
 
   /**
