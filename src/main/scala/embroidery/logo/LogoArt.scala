@@ -1,13 +1,13 @@
-package embroidery
-package asciiArt
-package logo
+package embroidery.logo
 
 import java.awt.Image
 import java.awt.image.BufferedImage
 import java.io.{ File, IOException }
 import javax.imageio.ImageIO
 
-final case class LogoArt private (logo: BufferedImage, url: URL, logoStyle: LogoStyle) extends Embroidery {
+import embroidery.{ Embroidery, Pixel }
+
+final case class LogoArt private (logo: BufferedImage, url: LogoPath, logoStyle: LogoStyle) extends Embroidery {
 
   override def drawImage(): BufferedImage = {
     val (width, height) =
@@ -51,17 +51,24 @@ object LogoArt {
   def apply(imgPath: String, maybeLogoStyle: Either[String, LogoStyle]): Embroidery = {
     val result = for {
       logoStyle <- maybeLogoStyle
-      url       <- URL(imgPath)
-      logo      <- readLogo(url)
+      url = LogoPath(imgPath)
+      logo <- readLogo(url)
     } yield LogoArt(logo, url, logoStyle)
     result.fold(Embroidery.Empty, identity)
   }
 
-  private def readLogo(url: URL): Either[String, BufferedImage] =
+  private def readLogo(url: LogoPath): Either[String, BufferedImage] =
     try {
-      val bufferedImage = ImageIO.read(new File(url.value))
-      if (bufferedImage.getWidth == 0 || bufferedImage.getHeight == 0) Left("Width and Height should be > 0")
-      else Right(bufferedImage)
+      def isValid: Boolean = {
+        val regex = "[^\\s]+(\\.(?i)(jpg|jpeg|png|bmp))$"
+        url.value.matches(regex)
+      }
+      if (isValid) {
+        val bufferedImage = ImageIO.read(new File(url.value))
+        if (bufferedImage.getWidth == 0 || bufferedImage.getHeight == 0) Left("Width and Height should be > 0")
+        else Right(bufferedImage)
+      } else
+        Left(s"Invalid path: $url, Embroidery supports only: jpg, jpeg, png, bmp formats.")
     } catch {
       case ex: IOException => Left(ex.getMessage)
     }

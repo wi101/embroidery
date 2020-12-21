@@ -2,17 +2,29 @@
 
 You can add an artistic touch to your console.
 
-## Usage
+To use embroidery, add the following line in your `build.sbt` file:
+```
+libraryDependencies += "com.github.wi101" %% "embroidery" % "0.1.1"
+```
 
-This is an example usage:
+## Usage
 
 1. Convert your text to ASCII Art:
 `title.asciiArt` returns a String that you can display or use in your project.
+ Or you can use the syntax `title.toAsciiArt`.
 
 ```scala
-import embroidery.asciiArt.title
+import embroidery.title
 
 title.asciiArt("Hello world")
+```
+
+Or:
+
+```scala
+import embroidery._
+
+"Hello".toAsciiArt
 ```
 
 Output:
@@ -32,11 +44,16 @@ Output:
 You can specify the spaces between the character.
 For example, if you would like to display S c a l a, you can call:
 ```scala
-import embroidery.asciiArt._
+import embroidery.title
 
 title.asciiArt("Scala", art = 'S', spaces = 1)
 ```
+Or
+```scala
+import embroidery._
 
+"Scala".toAsciiArt(art = 'S', spaces = 1)
+```
 Output:
 
 ```
@@ -57,24 +74,57 @@ WARNNG: The title should be short to be able to display it in your screen (maxim
 2. Convert your LOGO to ASCII Art:
 
 You can get the Ascii Art of your icons using `logo.asciiArt` method.
+Or you can use the syntax `logoPath.toAsciiArt`.
 
-```
+```scala
+import embroidery.logo
+
 logo.asciiArt("src/test/scala/embroidery/asciiArt/logos/images/pikachu.png")
+```
+
+OR
+
+```scala
+import embroidery._
+
+ImagePath("src/test/scala/embroidery/asciiArt/logos/images/pikachu.png").toAsciiArt
 ```
 | pikachu.png | result with ASCII Art |
 | --- | --- |
 | ![pikachu](https://user-images.githubusercontent.com/3535357/87250424-f0908c00-c464-11ea-9bb9-bc92b23ca63d.png) | ![pikachu](https://user-images.githubusercontent.com/3535357/87250405-d48cea80-c464-11ea-9ccc-ce13d4ef60dd.png) |
 
-```
+```scala
+import embroidery.logo
+
 logo.asciiArt("src/test/scala/embroidery/asciiArt/logos/images/zio.png")
 ```
+
+OR
+
+```scala
+import embroidery._
+
+ImagePath("src/test/scala/embroidery/asciiArt/logos/images/zio.png").toAsciiArt
+```
+
 | zio.png | result with ASCII Art |
 | --- | --- |
 | ![zio](https://user-images.githubusercontent.com/3535357/87250611-49145900-c466-11ea-8f75-ccfacc4bae05.png) | ![zio](https://user-images.githubusercontent.com/3535357/87250628-7234e980-c466-11ea-87c1-ae82c09703ce.png) | 
 
-```
+```scala
+import embroidery.logo
+
 logo.asciiArt("src/test/scala/embroidery/asciiArt/logos/images/scala.jpg")
 ```
+
+OR
+
+```scala
+import embroidery._
+
+ImagePath("src/test/scala/embroidery/asciiArt/logos/images/scala.jpg").toAsciiArt
+```
+
 | scala.jpg | result with ASCII Art |
 | --- | --- |
 |![scala](https://user-images.githubusercontent.com/3535357/36055500-2611c978-0dfd-11e8-8ca4-15c689fa0438.jpg) | ![scala](https://user-images.githubusercontent.com/3535357/87250678-d8ba0780-c466-11ea-9e4d-bd1b7de03119.png) |
@@ -82,17 +132,14 @@ logo.asciiArt("src/test/scala/embroidery/asciiArt/logos/images/scala.jpg")
 You can also decide which characters to use on each brightness level:
 
 ```scala
-import embroidery.asciiArt._
+import embroidery._
 
  val pixelsWithArt: List[PixelAsciiArt] = List(
     PixelAsciiArt(Pixel(255), Art(' ')),
     PixelAsciiArt(Pixel(0), Art('#'))
   )
 
-  val img: String = logo.asciiArt(
-    "src/test/scala/embroidery/asciiArt/images/zio.png",
-    pixelsWithArt
-  )
+  val img: String = ImagePath("src/test/scala/embroidery/asciiArt/images/zio.png").toAsciiArt(pixelsWithArt)
   val s = img.flatMap(
     c =>
       if (c != ' ' && c != '\n')
@@ -109,7 +156,8 @@ Output:
 You can also control the size of your logo:
 
 ```scala
-import embroidery.asciiArt._
+import embroidery._
+
   val pixelsWithArt: List[PixelAsciiArt] = List(
       PixelAsciiArt(Pixel(255), Art(' ')),
       PixelAsciiArt(Pixel(230), Art('.')),
@@ -134,6 +182,7 @@ import embroidery.asciiArt._
     100,
     50
   )
+// The same as: ImagePath("...").toAsciiArt(pixelsWithArt, 100, 50)
   val scala = img.flatMap(
     c =>
       if (c != ' ' && c != '\n')

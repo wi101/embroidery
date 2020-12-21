@@ -1,4 +1,4 @@
-package embroidery.asciiArt
+package embroidery
 package title
 
 // Title
@@ -7,13 +7,10 @@ final case class Title private (text: String, style: TitleStyle)
 object Title {
   val MaxLength: Int = 20
   def apply(str: String, style: TitleStyle): Either[String, Title] = {
-    val text = finalText(str, style.spaces)
+    val text = str.mkString(" " * style.spaces)
     if (text.length <= MaxLength) Right(new Title(text, style))
     else Left(s"The title shouldn't be too long, maximum supported length is $MaxLength")
   }
-
-  private def finalText(text: String, spaces: Int): String =
-    text.mkString(" " * spaces)
 }
 
 /**

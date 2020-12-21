@@ -1,19 +1,8 @@
-package embroidery.asciiArt
+package embroidery
 package logo
 
-final case class URL private (value: String) extends AnyVal {
-  def isValid: Boolean = {
-    val regex = "[^\\s]+(\\.(?i)(jpg|jpeg|png|bmp))$"
-    value.matches(regex)
-  }
-}
-
-object URL {
-  def apply(path: String): Either[String, URL] = {
-    val url = new URL(path)
-    if (url.isValid) Right(url)
-    else Left(s"Invalid path: $path, Embroidery supports only: jpg, jpeg, png, bmp formats.")
-  }
+final case class LogoPath(value: String) {
+  override def toString: String = value
 }
 
 // Logo
@@ -24,8 +13,8 @@ final case class Size(width: Int, height: Int) {
 }
 
 final case class LogoStyle private (
-    pixelsWithArt: List[PixelAsciiArt] = PixelAsciiArt.pixelsWithArt,
-    maxSize: Size = Size(100, 100)
+    pixelsWithArt: List[PixelAsciiArt],
+    maxSize: Size
 ) {
   def isValid: Boolean = maxSize.width > 10 || maxSize.height > 10
   val darkestArt: Art =
@@ -33,11 +22,12 @@ final case class LogoStyle private (
 }
 
 object LogoStyle {
-  val default: Either[String, LogoStyle] = Right(new LogoStyle(PixelAsciiArt.pixelsWithArt))
   val MinSize                            = Size(20, 20)
+  val defaultSize                        = Size(100, 100)
+  val default: Either[String, LogoStyle] = Right(new LogoStyle(PixelAsciiArt.pixelsWithArt, defaultSize))
   def apply(
       pixelsWithArt: List[PixelAsciiArt] = PixelAsciiArt.pixelsWithArt,
-      maxSize: Size = Size(100, 100)
+      maxSize: Size = defaultSize
   ): Either[String, LogoStyle] = {
     if (maxSize.width >= MinSize.width || maxSize.height >= MinSize.height) Right(new LogoStyle(pixelsWithArt, maxSize))
     else Left(s"$maxSize is invalid, it should be at least $MinSize")
