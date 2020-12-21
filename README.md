@@ -8,6 +8,7 @@ This is an example usage:
 
 1. Convert your text to ASCII Art:
 `title.asciiArt` returns a String that you can display or use in your project.
+ Or you can use the syntax `title.toAsciiArt`.
 
 ```scala
 import embroidery.title
@@ -70,6 +71,7 @@ WARNNG: The title should be short to be able to display it in your screen (maxim
 2. Convert your LOGO to ASCII Art:
 
 You can get the Ascii Art of your icons using `logo.asciiArt` method.
+Or you can use the syntax `logoPath.toAsciiArt`.
 
 ```scala
 import embroidery.logo

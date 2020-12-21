@@ -7,7 +7,7 @@ import javax.imageio.ImageIO
 
 import embroidery.{ Embroidery, Pixel }
 
-final case class LogoArt private (logo: BufferedImage, url: ImagePath, logoStyle: LogoStyle) extends Embroidery {
+final case class LogoArt private (logo: BufferedImage, url: LogoPath, logoStyle: LogoStyle) extends Embroidery {
 
   override def drawImage(): BufferedImage = {
     val (width, height) =
@@ -51,13 +51,13 @@ object LogoArt {
   def apply(imgPath: String, maybeLogoStyle: Either[String, LogoStyle]): Embroidery = {
     val result = for {
       logoStyle <- maybeLogoStyle
-      url = ImagePath(imgPath)
+      url = LogoPath(imgPath)
       logo <- readLogo(url)
     } yield LogoArt(logo, url, logoStyle)
     result.fold(Embroidery.Empty, identity)
   }
 
-  private def readLogo(url: ImagePath): Either[String, BufferedImage] =
+  private def readLogo(url: LogoPath): Either[String, BufferedImage] =
     try {
       def isValid: Boolean = {
         val regex = "[^\\s]+(\\.(?i)(jpg|jpeg|png|bmp))$"

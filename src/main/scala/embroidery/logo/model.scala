@@ -1,7 +1,7 @@
 package embroidery
 package logo
 
-final case class ImagePath(value: String) {
+final case class LogoPath(value: String) {
   override def toString: String = value
 }
 
