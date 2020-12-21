@@ -25,7 +25,5 @@ scalacOptions ++= Seq(
 )
 scalafmtOnCompile := true
 
-skip in publish := true
-
 // scalafix; run with `scalafixEnable` followed by `scalafixAll`
 ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports" % "0.4.3"
