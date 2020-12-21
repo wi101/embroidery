@@ -23,7 +23,7 @@ final case class LogoStyle private (
 
 object LogoStyle {
   val MinSize                            = Size(20, 20)
-  val defaultSize                        = Size(20, 20)
+  val defaultSize                        = Size(100, 100)
   val default: Either[String, LogoStyle] = Right(new LogoStyle(PixelAsciiArt.pixelsWithArt, defaultSize))
   def apply(
       pixelsWithArt: List[PixelAsciiArt] = PixelAsciiArt.pixelsWithArt,
