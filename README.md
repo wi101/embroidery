@@ -128,7 +128,6 @@ You can also decide which characters to use on each brightness level:
 
 ```scala
 import embroidery._
-import embroidery.logo.PixelAsciiArt
 
  val pixelsWithArt: List[PixelAsciiArt] = List(
     PixelAsciiArt(Pixel(255), Art(' ')),
@@ -153,7 +152,6 @@ You can also control the size of your logo:
 
 ```scala
 import embroidery._
-import embroidery.logo.PixelAsciiArt
 
   val pixelsWithArt: List[PixelAsciiArt] = List(
       PixelAsciiArt(Pixel(255), Art(' ')),
