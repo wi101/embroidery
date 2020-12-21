@@ -3,7 +3,7 @@ package logo
 
 object LogoExamples extends App {
   println(logo.asciiArt("src/test/images/cat2.png"))
-  println(logo.asciiArt("src/test/images/cat.png"))
+  println(embroidery.ImagePath("src/test/images/cat.png").toAsciiArt)
   println(logo.asciiArt("src/test/images/smiley.png"))
   println(logo.asciiArt("src/test/images/scala.jpg"))
 

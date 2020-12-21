@@ -46,7 +46,7 @@ abstract class Embroidery { self =>
           matrix.pixels.foldLeft("") { (asciiArt, lines) =>
             asciiArt + lines.map(getAsciiArt).mkString + System.getProperty("line.separator")
           }
-        }.recover(err => s"$RED<error>$RESET Input couldn't be converted to ASCII Art. Reason: $err.")
+        }.recover { case err => s"$RED<error>$RESET Input couldn't be converted to ASCII Art. Reason: $err." }
           .getOrElse(s"$RED<error>$RESET Unexpected error!")
     }
 }

@@ -1,11 +1,12 @@
-package embroidery.title
+package embroidery
+package title
 
 object TitleExamples extends App {
-  println(asciiArt("Hello World", '@', 2))
-  println(asciiArt("Welcome", 1))
-  println(asciiArt("WELCOME", '^', 1))
-  println(asciiArt("Peace", '+', 0))
-  println(asciiArt("Scala", 'S', 1))
+  println("Hello World".toAsciiArt('@', 2))
+  println("Welcome".toAsciiArt(1))
+  println("WELCOME".toAsciiArt('^', 1))
+  println("Peace".toAsciiArt('+', 0))
+  println("Scala".toAsciiArt('S', 1))
   // invalid title
-  println(asciiArt("a" * 70, 1))
+  println(("a" * 70).toAsciiArt)
 }

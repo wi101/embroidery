@@ -1,5 +1,4 @@
 name := "embroidery"
-scalaVersion := "2.13.3"
 
 inThisBuild(
   List(
@@ -24,6 +23,8 @@ scalacOptions ++= Seq(
   "-Xlint"
 )
 scalafmtOnCompile := true
+
+crossScalaVersions := List("2.12.10", "2.13.4")
 
 // scalafix; run with `scalafixEnable` followed by `scalafixAll`
 ThisBuild / scalafixDependencies += "com.github.liancheng" %% "organize-imports" % "0.4.3"

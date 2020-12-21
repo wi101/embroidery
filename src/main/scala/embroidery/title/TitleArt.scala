@@ -33,6 +33,6 @@ final case class TitleArt private (title: Title) extends Embroidery {
 }
 
 object TitleArt {
-  def apply(value: String, style: TitleStyle): Embroidery =
+  def apply(value: String, style: TitleStyle = TitleStyle.default): Embroidery =
     Title(value, style).fold[Embroidery](Embroidery.Empty, TitleArt(_))
 }
