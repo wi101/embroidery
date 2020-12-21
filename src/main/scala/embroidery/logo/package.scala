@@ -1,5 +1,4 @@
 package embroidery
-package asciiArt
 
 package object logo {
 

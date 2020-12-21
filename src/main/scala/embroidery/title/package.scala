@@ -1,4 +1,4 @@
-package embroidery.asciiArt
+package embroidery
 
 package object title {
   def asciiArt(str: String): String =

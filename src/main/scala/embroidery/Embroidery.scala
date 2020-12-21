@@ -1,4 +1,4 @@
-package embroidery.asciiArt
+package embroidery
 
 import java.awt.Color
 import java.awt.image.BufferedImage
@@ -44,7 +44,7 @@ abstract class Embroidery { self =>
         Try {
           val matrix = toPixelMatrix
           matrix.pixels.foldLeft("") { (asciiArt, lines) =>
-            asciiArt + lines.map(getAsciiArt).mkString + "\n"
+            asciiArt + lines.map(getAsciiArt).mkString + System.getProperty("line.separator")
           }
         }.recover(err => s"$RED<error>$RESET Input couldn't be converted to ASCII Art. Reason: $err.")
           .getOrElse(s"$RED<error>$RESET Unexpected error!")

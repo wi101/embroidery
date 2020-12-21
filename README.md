@@ -10,8 +10,7 @@ This is an example usage:
 `title.asciiArt` returns a String that you can display or use in your project.
 
 ```scala
-import embroidery.asciiArt.title
-
+import embroidery.title
 title.asciiArt("Hello world")
 ```
 
@@ -32,7 +31,7 @@ Output:
 You can specify the spaces between the character.
 For example, if you would like to display S c a l a, you can call:
 ```scala
-import embroidery.asciiArt._
+import embroidery.title
 
 title.asciiArt("Scala", art = 'S', spaces = 1)
 ```
@@ -58,21 +57,27 @@ WARNNG: The title should be short to be able to display it in your screen (maxim
 
 You can get the Ascii Art of your icons using `logo.asciiArt` method.
 
-```
+```scala
+import embroidery.logo
+
 logo.asciiArt("src/test/scala/embroidery/asciiArt/logos/images/pikachu.png")
 ```
 | pikachu.png | result with ASCII Art |
 | --- | --- |
 | ![pikachu](https://user-images.githubusercontent.com/3535357/87250424-f0908c00-c464-11ea-9bb9-bc92b23ca63d.png) | ![pikachu](https://user-images.githubusercontent.com/3535357/87250405-d48cea80-c464-11ea-9ccc-ce13d4ef60dd.png) |
 
-```
+```scala
+import embroidery.logo
+
 logo.asciiArt("src/test/scala/embroidery/asciiArt/logos/images/zio.png")
 ```
 | zio.png | result with ASCII Art |
 | --- | --- |
 | ![zio](https://user-images.githubusercontent.com/3535357/87250611-49145900-c466-11ea-8f75-ccfacc4bae05.png) | ![zio](https://user-images.githubusercontent.com/3535357/87250628-7234e980-c466-11ea-87c1-ae82c09703ce.png) | 
 
-```
+```scala
+import embroidery.logo
+
 logo.asciiArt("src/test/scala/embroidery/asciiArt/logos/images/scala.jpg")
 ```
 | scala.jpg | result with ASCII Art |
@@ -82,7 +87,8 @@ logo.asciiArt("src/test/scala/embroidery/asciiArt/logos/images/scala.jpg")
 You can also decide which characters to use on each brightness level:
 
 ```scala
-import embroidery.asciiArt._
+import embroidery._
+import embroidery.logo.PixelAsciiArt
 
  val pixelsWithArt: List[PixelAsciiArt] = List(
     PixelAsciiArt(Pixel(255), Art(' ')),
@@ -109,7 +115,9 @@ Output:
 You can also control the size of your logo:
 
 ```scala
-import embroidery.asciiArt._
+import embroidery._
+import embroidery.logo.PixelAsciiArt
+
   val pixelsWithArt: List[PixelAsciiArt] = List(
       PixelAsciiArt(Pixel(255), Art(' ')),
       PixelAsciiArt(Pixel(230), Art('.')),

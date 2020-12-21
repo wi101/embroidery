@@ -1,4 +1,4 @@
-package embroidery.asciiArt
+package embroidery
 package logo
 
 final case class URL private (value: String) extends AnyVal {

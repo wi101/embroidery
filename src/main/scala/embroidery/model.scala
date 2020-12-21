@@ -1,4 +1,4 @@
-package embroidery.asciiArt
+package embroidery
 
 // Common Data types
 final case class Art(value: Char) extends AnyVal

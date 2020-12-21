@@ -1,4 +1,4 @@
-package embroidery.asciiArt
+package embroidery
 package title
 
 import java.awt.Font

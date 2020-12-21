@@ -1,11 +1,11 @@
-package embroidery
-package asciiArt
-package logo
+package embroidery.logo
 
 import java.awt.Image
 import java.awt.image.BufferedImage
 import java.io.{ File, IOException }
 import javax.imageio.ImageIO
+
+import embroidery.{ Embroidery, Pixel }
 
 final case class LogoArt private (logo: BufferedImage, url: URL, logoStyle: LogoStyle) extends Embroidery {
 

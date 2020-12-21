@@ -1,4 +1,4 @@
-package embroidery.asciiArt
+package embroidery
 package logo
 
 object LogoExamples extends App {
