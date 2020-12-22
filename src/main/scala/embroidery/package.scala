@@ -22,9 +22,9 @@ package object embroidery {
     * @example
     * ImagePath("src/img/logo.png").toAsciiArt
     */
-  type ImagePath     = logo.LogoPath
+  type ImagePath     = logo.ImagePath
   type PixelAsciiArt = logo.PixelAsciiArt
-  val ImagePath: logo.LogoPath.type          = logo.LogoPath
+  val ImagePath: logo.ImagePath.type         = logo.ImagePath
   val PixelAsciiArt: logo.PixelAsciiArt.type = logo.PixelAsciiArt
 
   implicit class LogoHelper(val path: ImagePath) extends AnyVal {
