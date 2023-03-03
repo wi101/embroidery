@@ -1,11 +1,10 @@
-package embroidery.logo
+package embroidery
+package logo
 
 import java.awt.Image
 import java.awt.image.BufferedImage
 import java.io.{ File, IOException }
 import javax.imageio.ImageIO
-
-import embroidery.{ Embroidery, Pixel }
 
 final case class LogoArt private (logo: BufferedImage, url: ImagePath, logoStyle: LogoStyle) extends Embroidery {
 
@@ -43,7 +42,7 @@ final case class LogoArt private (logo: BufferedImage, url: ImagePath, logoStyle
       val q: Float = height.toFloat / width.toFloat
       val newWidth = (y / q).toInt
       (newWidth * 2, y)
-    } else (x, y / 2) //if height == width
+    } else (x, y / 2) // if height == width
   }
 }
 

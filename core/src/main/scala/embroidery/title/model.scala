@@ -13,10 +13,11 @@ object Title {
   }
 }
 
-/**
-  * The style of the title
-  * @param art the art character to be used.
-  * @param spaces between each character.
+/** The style of the title
+  * @param art
+  *   the art character to be used.
+  * @param spaces
+  *   between each character.
   */
 final case class TitleStyle(art: Art = Art('#'), spaces: Int = 0) {
   // currently the font size couldn't be modified

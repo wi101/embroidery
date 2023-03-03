@@ -1,7 +1,6 @@
 package object embroidery {
 
-  /**
-    * Apply asciiArt to any string
+  /** Apply asciiArt to any string
     */
   implicit class TitleHelper(val text: String) extends AnyVal {
     def toAsciiArt: String =
@@ -17,10 +16,9 @@ package object embroidery {
       title.asciiArt(text, spaces = spaces)
   }
 
-  /**
-    * Apply asciiArt to any image path.
+  /** Apply asciiArt to any image path.
     * @example
-    * ImagePath("src/img/logo.png").toAsciiArt
+    *   ImagePath("src/img/logo.png").toAsciiArt
     */
   type ImagePath     = logo.ImagePath
   type PixelAsciiArt = logo.PixelAsciiArt
