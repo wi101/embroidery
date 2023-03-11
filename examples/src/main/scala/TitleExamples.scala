@@ -1,5 +1,4 @@
-package embroidery
-package title
+import embroidery.TitleHelper
 
 object TitleExamples extends App {
   println("Hello World".toAsciiArt('@', 2))

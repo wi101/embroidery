@@ -2,7 +2,6 @@ package embroidery
 
 import java.awt.Color
 import java.awt.image.BufferedImage
-
 import scala.Console.{ RED, RESET }
 import scala.util.Try
 
@@ -28,7 +27,7 @@ abstract class Embroidery { self =>
 
       // calculate the brightness
       val pixel = (pixelColor.getRed + pixelColor.getBlue + pixelColor.getGreen) / 3
-      matrix(i).update(j, Pixel(pixel.toInt))
+      matrix(i).update(j, Pixel(pixel))
     }
     PixelMatrix(matrix)
   }

@@ -1,20 +1,19 @@
-package embroidery
-package logo
+import embroidery.{ Art, Pixel, PixelAsciiArt, logo }
 
 object LogoExamples extends App {
-  println(logo.asciiArt("src/test/images/cat2.png"))
-  println(embroidery.ImagePath("src/test/images/cat.png").toAsciiArt)
-  println(logo.asciiArt("src/test/images/smiley.png"))
-  println(logo.asciiArt("src/test/images/scala.jpg"))
+  println(logo.asciiArt("examples/src/images/cat2.png"))
+  println(embroidery.ImagePath("examples/src/images/cat.png").toAsciiArt)
+  println(logo.asciiArt("examples/src/images/smiley.png"))
+  println(logo.asciiArt("examples/src/images/scala.jpg"))
 
   // invalid
-  println(logo.asciiArt("src/test/images/play.png", 5, 5))
+  println(logo.asciiArt("examples/src/images/play.png", 5, 5))
 
-  println(logo.asciiArt("src/test/images/akka.png"))
-  println(logo.asciiArt("src/test/images/fleur.jpg", 20, 20))
-  println(logo.asciiArt("src/test/images/transparent.png")) //check an icon with transparent background
-  println(logo.asciiArt("src/test/images/scalaz.png"))
-  println(logo.asciiArt("src/test/images/pikachu.png", 50, 50))
+  println(logo.asciiArt("examples/src/images/akka.png"))
+  println(logo.asciiArt("examples/src/images/fleur.jpg", 20, 20))
+  println(logo.asciiArt("examples/src/images/transparent.png")) // check an icon with transparent background
+  println(logo.asciiArt("examples/src/images/scalaz.png"))
+  println(logo.asciiArt("examples/src/images/pikachu.png", 50, 50))
 
   val pixelsWithArt: List[PixelAsciiArt] = List(
     // Brightest:255 ----> Darkest:0
@@ -36,7 +35,7 @@ object LogoExamples extends App {
   )
 
   val img = logo.asciiArt(
-    "src/test/images/scala.jpg",
+    "examples/src/test/images/scala.jpg",
     pixelsWithArt,
     100,
     50
